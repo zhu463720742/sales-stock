@@ -1,0 +1,10 @@
+package {beanPackageName};
+
+import com.lichao.salesstock.comm.model.BaseEntity;
+{import}
+
+public class {beanName} extends BaseEntity<Long> {
+
+{filelds}
+{getset}
+}

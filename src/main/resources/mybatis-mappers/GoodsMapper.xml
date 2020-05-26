@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lichao.salesstock.business.dao.GoodsDao">
+
+	<sql id="where">
+		<where>
+			<if test="params.id != null and params.id != ''">
+				and id = #{params.id} 
+			</if>
+			<if test="params.goodsId != null and params.goodsId != ''">
+				and goodsId = #{params.goodsId} 
+			</if>
+			<if test="params.goodsName != null and params.goodsName != ''">
+				and goodsName = #{params.goodsName} 
+			</if>
+			<if test="params.goodsNorm != null and params.goodsNorm != ''">
+				and goodsNorm = #{params.goodsNorm} 
+			</if>
+			<if test="params.goodsAdress != null and params.goodsAdress != ''">
+				and goodsAdress = #{params.goodsAdress} 
+			</if>
+			<if test="params.goodsPrice != null and params.goodsPrice != ''">
+				and goodsPrice = #{params.goodsPrice} 
+			</if>
+			<if test="params.goodsNum != null and params.goodsNum != ''">
+				and goodsNum = #{params.goodsNum} 
+			</if>
+			<if test="params.createTime != null and params.createTime != ''">
+				and createTime = #{params.createTime} 
+			</if>
+		
+		</where>
+	</sql>
+
+	<select id="count" resultType="int">
+		select count(1) from t_goods t
+		<include refid="where" />
+	</select>
+
+	<select id="list" resultType="Goods">
+		select * from t_goods t
+		<include refid="where" />
+		${params.orderBy}
+		limit #{offset}, #{limit}
+	</select>
+
+	<update id="update">
+		update t_goods t
+		<set>
+			<if test="goodsId != null">
+				goodsId = #{goodsId}, 
+			</if>
+			<if test="goodsName != null">
+				goodsName = #{goodsName}, 
+			</if>
+			<if test="goodsNorm != null">
+				goodsNorm = #{goodsNorm}, 
+			</if>
+			<if test="goodsAdress != null">
+				goodsAdress = #{goodsAdress}, 
+			</if>
+			<if test="goodsPrice != null">
+				goodsPrice = #{goodsPrice}, 
+			</if>
+			<if test="goodsNum != null">
+				goodsNum = #{goodsNum}, 
+			</if>
+			<if test="createTime != null">
+				createTime = #{createTime}, 
+			</if>
+
+		</set>
+
+		where t.id = #{id}
+	</update>
+
+</mapper>

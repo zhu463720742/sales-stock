@@ -1,0 +1,8 @@
+CREATE OR REPLACE VIEW v_code AS
+                                                   SELECT id,type,k,val FROM t_dict
+                                                   UNION
+                                                   SELECT id,'shop' type,id k,shopName val FROM t_shop
+                                                   UNION
+                                                   SELECT id,'goods' type,goodsId k,goodsName val FROM t_goods
+                                                   UNION
+                                                   SELECT id,'user' type,id,username val FROM sys_user
