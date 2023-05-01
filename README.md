@@ -1,2 +1,2 @@
 # sales-stock
-基于 Jdk 1.8+Spring boot+Mybatis 商品进销存信息管理系统
+基于 Jdk 1.8+Spring boot+Mybatis  华台兴后台管理系统
